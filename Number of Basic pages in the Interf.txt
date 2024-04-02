@@ -1,0 +1,16 @@
+Number of Basic pages in the Interface 
+
+1)Login Page.
+
+- Registration age for all actors
+- Passengers Login 
+- Airline/Management and Airline Dispatcher 
+- Registration age for all actors
+
+
+2)Weather update page.
+
+3)Passenger display page with pages to display information based on the flight details and Passenger ID.
+
+4)Flight dispatcher page to assign flight dispatched details and flight delay and on time updates 
+

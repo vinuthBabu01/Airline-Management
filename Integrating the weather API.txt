@@ -1,0 +1,38 @@
+Integrating the weather API
+
+We can go ahead with using the national weather service API from this given link 
+
+- https://www.weather.gov/documentation/services-web-api
+
+Costing : Its a free of charge API provided by the United States Government for public usage.
+
+
+Rules to follow while integrating 
+
+Content Negotiation
+The new API will use headers to modify the version and format of the response. Every request, either by browser or application, sends header information every time you visit any website. For example, a commonly used header called "UserAgent" tells a website what type of device you are using so it can tailor the best experience for you. No private information is shared in a header, and this is a standard practice for all government and private sites. Developers can override these headers for specific purposes (see the "API Specifications" tab for more information). You can get full details by visiting the header field definitions page at the World Wide Web Consortium site.
+
+Authentication
+Format the response
+Request new features
+
+
+Formats 
+
+Endpoints typically have a GeoJSON default format, given the inclusion of geometry data. See the Specification tab for details on each endpoint. Below are common formats available by the API.
+
+GeoJSON: application/geo+json
+JSON-LD: application/ld+json
+DWML: application/vnd.noaa.dwml+xml
+OXML: application/vnd.noaa.obs+xml
+CAP: application/cap+xml
+ATOM: application/atom+xml
+Accept: application/cap+xml
+
+
+
+
+
+
+
+
