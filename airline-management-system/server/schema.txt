@@ -1,0 +1,225 @@
+Tickets Collection Schema:
+
+{
+  "ticket_id": {
+    "type": "int",
+    "description": "Unique identifier for each ticket"
+  },
+  "flight_id": {
+    "type": "int",
+    "description": "Identifier for the flight associated with the ticket"
+  },
+  "user_id": {
+    "type": "int",
+    "description": "Identifier for the user who booked the ticket"
+  },
+  "passenger_name": {
+    "type": "string",
+    "description": "Name of the passenger"
+  },
+  "passenger_email": {
+    "type": "string",
+    "description": "Email of the passenger"
+  },
+  "seat_number": {
+    "type": "string",
+    "description": "Seat number assigned to the passenger"
+  },
+  "status": {
+    "enum": ["booked", "cancelled", "completed"],
+    "description": "Status of the ticket"
+  },
+  "booking_date": {
+    "type": "date",
+    "description": "Date and time when the ticket was booked"
+  },
+  "cancellation_date": {
+    "type": "date",
+    "description": "Date and time when the ticket was cancelled (if applicable)"
+  },
+  "price": {
+    "type": "decimal",
+    "description": "Price paid for the ticket"
+  }
+}
+
+Flights Collection Schema:
+
+{
+  "flight_id": {
+    "type": "string",
+    "description": "Unique identifier for the flight"
+  },
+  "airline": {
+    "type": "string",
+    "description": "Name of the airline operating the flight"
+  },
+  "aircraft": {
+    "type": "string",
+    "description": "Type or model of the aircraft used for the flight"
+  },
+  "departure_airport": {
+    "type": "string",
+    "description": "Code or name of the departure airport"
+  },
+  "departure_time": {
+    "type": "date",
+    "description": "Scheduled departure time of the flight"
+  },
+  "arrival_airport": {
+    "type": "string",
+    "description": "Code or name of the arrival airport"
+  },
+  "arrival_time": {
+    "type": "date",
+    "description": "Scheduled arrival time of the flight"
+  },
+  "duration_minutes": {
+    "type": "number",
+    "description": "Estimated duration of the flight in minutes"
+  },
+  "passenger_capacity": {
+    "type": "number",
+    "description": "Total number of passengers the flight can accommodate"
+  },
+  "ticket_price": {
+    "type": "number",
+    "description": "Base price of a ticket for this flight"
+  },
+  "available_seats": {
+    "type": "number",
+    "description": "Number of available seats remaining on the flight"
+  },
+  "status": {
+    "type": "string",
+    "enum": ["scheduled", "boarding", "delayed", "departed", "arrived", "cancelled"],
+    "description": "Current status of the flight"
+  }
+}
+
+Airports Collection Schema:
+{
+  "airport_code": {
+    "type": "string",
+    "description": "Unique code assigned to each airport"
+  },
+  "name": {
+    "type": "string",
+    "description": "Name of the airport"
+  },
+  "location": {
+    "type": "object",
+    "properties": {
+      "city": {
+        "type": "string",
+        "description": "City where the airport is located"
+      },
+      "country": {
+        "type": "string",
+        "description": "Country where the airport is located"
+      }
+    },
+    "description": "Geographical location of the airport"
+  },
+  "timezone": {
+    "type": "string",
+    "description": "Time zone of the airport"
+  },
+  "capacity": {
+    "type": "number",
+    "description": "Number of airplanes it can operate in a day"
+  }
+}
+
+Crews Collection Schema:
+
+{
+  "crew_id": {
+    "type": "string",
+    "description": "Unique identifier for the crew"
+  },
+  "crew_type": {
+    "type": "string",
+    "enum": ["pilot", "co-pilot", "flight_attendant", "engineer", "navigator", "other"],
+    "description": "Type of crew member"
+  },
+  "name": {
+    "type": "string",
+    "description": "Name of the crew member"
+  },
+  "flights": {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "flight_number": {
+          "type": "string",
+          "description": "Unique identifier of the flight"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["pilot", "co-pilot", "crew_member"],
+          "description": "Role of the crew member in this flight"
+        }
+      }
+    },
+    "description": "List of flights assigned to the crew member"
+  }
+}
+
+Users Collection Schema:
+{
+  "user_id": {
+    "type": "int",
+    "description": "Auto-incremented unique identifier for each user"
+  },
+  "email": {
+    "type": "string",
+    "description": "Email address of the user"
+  },
+  "first_name": {
+    "type": "string",
+    "description": "First name of the user"
+  },
+  "last_name": {
+    "type": "string",
+    "description": "Last name of the user"
+  },
+  "phone_number": {
+    "type": "string",
+    "description": "Phone number of the user"
+  },
+  "address": {
+    "type": ["string", "null"],
+    "description": "Address of the user (only for customers)"
+  },
+  "role": {
+    "enum": ["admin", "employee", "customer"],
+    "description": "Specifies the role of the user"
+  },
+  "created_at": {
+    "type": "timestamp",
+    "description": "Timestamp for when the user account was created"
+  },
+  "updated_at": {
+    "type": "timestamp",
+    "description": "Timestamp for when the user account was last updated"
+  }
+}
+
+Accounts Collection Schema:
+
+{
+  "username": {
+    "type": "string",
+    "description": "Unique username for login purposes"
+  },
+  "password": {
+    "type": "string",
+    "description": "Password for user authentication"
+  },
+  "user_id": {
+    "type": "int",
+    "description": "Reference to the user_id in the 'users' collection"
+  }
+}
