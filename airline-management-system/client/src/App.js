@@ -1,6 +1,7 @@
 import './App.css';
 import Login from './Login';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'; // Import necessary components from React Router
+import React,{useState,useEffect}from 'react'
 import  Register  from './Register';
 
 function App() {
