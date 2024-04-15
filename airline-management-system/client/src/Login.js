@@ -2,6 +2,8 @@
 import { useRef, useState, useEffect, useContext } from 'react';
 import AuthContext from "./context/AuthProvider";
 import axios from './api/axios';
+// import CryptoJS from 'crypto-js';
+
 const LOGIN_URL = 'http://localhost:5000/auth/login';
 
 const Login = () => {
@@ -27,6 +29,7 @@ const Login = () => {
         e.preventDefault();
 
         try {
+            // const encryptedPwd = CryptoJS.AES.encrypt(pwd, 'secret_key').toString();
             const response = await axios.post(LOGIN_URL,
                 JSON.stringify({ user, pwd }),
                 {

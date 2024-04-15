@@ -5,7 +5,7 @@ import axios from './api/axios';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = '/register';
+const REGISTER_URL = 'http://localhost:5000/auth/register';
 
 const Register = () => {
     const emailRef = useRef();
@@ -56,7 +56,7 @@ const Register = () => {
         }
         try {
             const response = await axios.post(REGISTER_URL,
-                JSON.stringify({ user, pwd }),
+                JSON.stringify({ user, pwd,role }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
