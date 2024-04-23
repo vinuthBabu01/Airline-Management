@@ -28,11 +28,11 @@ export default function StaticAppBar() {
             </IconButton>
           </Tooltip>
           <Typography fontFamily='Poppins' fontWeight={600} variant="h5" component="div" sx={{ flexGrow: 1 }}>
-            Generic Airlines
+            SkyPlanner
           </Typography>
           <Button sx={{ fontFamily: 'Poppins' }} size='large' href='/about' color="inherit">About us</Button>
           <Button sx={{ fontFamily: 'Poppins' }} size='large' href='/register' color="inherit">Sign Up</Button>
-          <Button sx={{ fontFamily: 'Poppins', mr: 10 }} size='large' href='/login' color="inherit">Login</Button>
+          <Button sx={{ fontFamily: 'Poppins', mr: 10 }} size='large' href='/Login' color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </Box>

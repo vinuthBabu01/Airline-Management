@@ -186,7 +186,7 @@ function BookFlight() {
                                 Please note down the bookingId for future use.
                             </DialogContentText>
                             <DialogContentText id="alert-dialog-description">
-                                Thank you for using Generic Airlines!
+                                Thank you for using SkyPlanner!
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>

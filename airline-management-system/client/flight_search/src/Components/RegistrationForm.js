@@ -21,6 +21,11 @@ import { Box, Link, Typography } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+const PHONE_REGEX = /^(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
+const REGISTER_URL = "http://localhost:5000/auth/login";
+
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -44,6 +49,9 @@ function Register() {
         password: '',
         verifypassword: '',
         showPassword: false,
+        firstname:'',
+        lastname:'',
+        address:''
     });
 
     const handleChange = (prop) => (event) => {
@@ -70,7 +78,7 @@ function Register() {
         }
         console.log(userObject);
 
-        axios.post('http://localhost:8083/users/create', userObject)
+        axios.post(REGISTER_URL, userObject)
             .then((res) => {
                 console.log(res.data)
                 setOpen(true);
@@ -115,6 +123,38 @@ function Register() {
                             value={inputs.phoneNo}
                             inputProps={{ pattern: '[0-9]{10}$' }}
                             onChange={handleChange('phoneNo')}
+                        />
+                    </Stack>
+                    <Stack sx={{ m: 3, width: 'stretch' }} alignItems='center' direction='row' spacing={2}>
+                        <TextField
+                            required
+                            fullWidth
+                            autoFocus
+                            id="outlined-required-username"
+                            label="First Name"
+                            name='firstname'
+                            value={inputs.firstname}
+                            onChange={handleChange('firstname')}
+                        />
+                        <TextField
+                            required
+                            fullWidth
+                            id="outlined-required-phoneNo"
+                            label="Last Name"
+                            name='lastname'
+                            value={inputs.lastname}
+                            onChange={handleChange('lastname')}
+                        />
+                    </Stack>
+                    <Stack sx={{ m: 4, width: 'stretch' }} alignItems='center' direction='row' spacing={2}>
+                    <TextField
+                            required
+                            fullWidth
+                            id="outlined-required-phoneNo"
+                            label="Address"
+                            name='address'
+                            value={inputs.address}
+                            onChange={handleChange('address')}
                         />
                     </Stack>
                     <TextField

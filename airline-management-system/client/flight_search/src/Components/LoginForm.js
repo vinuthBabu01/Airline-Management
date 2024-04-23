@@ -48,7 +48,7 @@ function Login() {
         }
         console.log(authenticationRequest);
 
-        axios.post('http://localhost:8083/authenticate', authenticationRequest)
+        axios.post('http://localhost:5000/auth/login', authenticationRequest)
             .then((res) => {
                 console.log(res.data)
                 if (inputs.username === 'admin') {
