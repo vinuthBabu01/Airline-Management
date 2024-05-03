@@ -24,7 +24,7 @@ import MuiAlert from '@mui/material/Alert';
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const PHONE_REGEX = /^(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
-const REGISTER_URL = "http://localhost:5000/auth/login";
+const REGISTER_URL = "http://localhost:5000/auth/register";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -74,7 +74,11 @@ function Register() {
             username: inputs.username,
             phoneNo: inputs.phoneNo,
             email: inputs.email,
-            userPassword: inputs.password
+            userPassword: inputs.password,
+            action:'register',
+            firstname:inputs.firstname,
+            lastname:inputs.lastname,
+            address:inputs.address
         }
         console.log(userObject);
 
@@ -111,7 +115,7 @@ function Register() {
                             label="username"
                             name='username'
                             value={inputs.username}
-                            inputProps={{ pattern: '[a-zA-Z]{4,16}$' }}
+                            inputProps={''}
                             onChange={handleChange('username')}
                         />
                         <TextField

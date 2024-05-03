@@ -44,7 +44,8 @@ function Login() {
     const handleSubmit = event => {
         const authenticationRequest = {
             username: inputs.username,
-            password: inputs.password
+            password: inputs.password,
+            action:'login'
         }
         console.log(authenticationRequest);
 
@@ -85,7 +86,7 @@ function Login() {
                             label="Username"
                             name='username'
                             value={inputs.username}
-                            inputProps={{ pattern: '[a-zA-Z]{4,16}$' }}
+                            inputProps={''}
                             onChange={handleChange('username')}
                         />
                         <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">

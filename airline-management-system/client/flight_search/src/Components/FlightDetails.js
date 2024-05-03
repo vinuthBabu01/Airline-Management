@@ -45,7 +45,7 @@ const Flights = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [flights, setFlights] = useState([]);
 
-    const url = "http://localhost:8084/flights/getByFromTo"
+    const url = "http://localhost:5000/search/searchflight"
 
     const params = {
         origin: location.state.origin,
@@ -55,18 +55,15 @@ const Flights = () => {
     console.log(location.state.origin, location.state.destination)
 
     useEffect(() => {
-        axios.get(url, { params })
-            .then(res => {
-                console.log(res.data);
-                setFlights(res.data);
-                setIsLoaded(true);
-            })
-            .then(
-                (error) => {
-                    setIsLoaded(true);
-                    setError(error);
-                }
-            )
+        axios.post(url, params)
+            .then((res) => {
+                console.log(res.data)
+                setIsLoaded(true)
+                setFlights(res.data.flight_data)
+                
+            }).catch((error) => {
+                console.log(error)
+            });
     }, [])
 
     if (error) {
@@ -124,10 +121,10 @@ const Flights = () => {
                             <TableBody>
                                 {flights.map((flight) => (
                                     <StyledTableRow
-                                        key={flight.flightId}
+                                        key={flight.logoUrl}
                                     >
                                         <StyledTableCell component="th" scope="row">
-                                            {flight.flightName}
+                                            {flight.logoUrl}
                                         </StyledTableCell>
                                         <StyledTableCell>{flight.departureTime}</StyledTableCell>
                                         <StyledTableCell>{flight.arrivalTime}</StyledTableCell>
