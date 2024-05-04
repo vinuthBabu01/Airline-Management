@@ -6,8 +6,10 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { Box } from "@mui/material";
 import Paper from "@mui/material/Paper";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+
 import "./customCss.css"; // Import your custom CSS file
 
 function Form() {
@@ -64,12 +66,12 @@ function Form() {
             inputProps={{ pattern: "[a-zA-Z]{3,15}$" }}
             onChange={handleChange}
           />
-          <DatePicker
-            selected={inputs.departureDate}
-            onChange={handleDateChange}
-            className="custom-datepicker" // Apply custom CSS class
-            name="Departure" // Add name attribute
-          />
+     
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker value={inputs.departureDate}
+            onChange={handleDateChange} />
+            </LocalizationProvider>
+
           <Button variant="contained" type="submit">
             Search Flight
           </Button>

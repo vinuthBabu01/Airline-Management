@@ -30,6 +30,7 @@ export default function StaticAppBar() {
           <Typography fontFamily='Poppins' fontWeight={600} variant="h5" component="div" sx={{ flexGrow: 1 }}>
             SkyPlanner
           </Typography>
+          <Button sx={{ fontFamily: 'Poppins' }} size='large' href='/SearchTicket' color="inherit">Search Ticket</Button>
           <Button sx={{ fontFamily: 'Poppins' }} size='large' href='/about' color="inherit">About us</Button>
           <Button sx={{ fontFamily: 'Poppins' }} size='large' href='/register' color="inherit">Sign Up</Button>
           <Button sx={{ fontFamily: 'Poppins', mr: 10 }} size='large' href='/Login' color="inherit">Login</Button>

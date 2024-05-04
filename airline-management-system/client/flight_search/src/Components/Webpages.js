@@ -8,6 +8,7 @@ import Register from './RegistrationForm';
 import Dashboard from './AdminProfile';
 import BookFlight from './BookingForm';
 import About from './about';
+import SearchTicket from './TicketDetails.js';
 
 const Webpages = () => {
 
@@ -19,6 +20,7 @@ const Webpages = () => {
                 <Route path='/flights' element = {<Flights />} />
                 <Route path='/register' element = {<Register />} />
                 <Route path='/admin' element = {<Dashboard />} />
+                <Route path='/SearchTicket' element = {<SearchTicket />} />
                 <Route path='/about' element = {<About />} />
                 <Route path='/book' element = {<BookFlight />} />
             </Routes>

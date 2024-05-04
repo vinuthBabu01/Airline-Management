@@ -11,12 +11,13 @@ export default function About() {
                     About us
                 </Typography>
                 <Typography align="left" variant="body1" gutterBottom>
-                Keeping it simple
+            
                 </Typography>
                 <Typography align="left" variant="body1" gutterBottom>
-              
+                From SkyPlanner, your one-stop shop for easy trip bookings, greetings! At SkyPlanner, we understand that traveling is just as significant as reaching a destination. Because we are passionate about providing perfect travel experiences, we have created a platform that puts you, the traveler, first in all we do.
 
-We come together each day to fulfill a promise of offering the single most comprehensive travel experience to users, through the best Desktop solutions, we keep customers at the center of everything we do.
+Giving you the assurance and comfort to explore the globe is our aim. Whether you're taking an unexpected weekend journey or organizing a dream vacation, SkyQuest can help you create an amazing trip experience. Our dedicated customer care, extensive selection of flights from top airlines, and easy booking tools are just a few of the ways we strive to provide you with the convenience and peace of mind you deserve.
+
                 </Typography>
             </Stack>
         </Box>
