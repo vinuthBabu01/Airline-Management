@@ -9,6 +9,8 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import { blue } from '@mui/material/colors';
 import { Box, Stack, Typography } from '@mui/material';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -58,9 +60,19 @@ const SearchTicket = () => {
     };    
 
     const handlePrintTicket = () => {
-        // Logic to print the ticket
-        console.log('Printing ticket...');
+        const filename = 'ticket.pdf';
+        const element = document.getElementById('ticket-details');
+
+        html2canvas(element).then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const imgWidth = 210;
+            const imgHeight = canvas.height * imgWidth / canvas.width;
+            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+            pdf.save(filename);
+        });
     };
+
 
     const handleCancelTicket = () => {
         // Logic to cancel the ticket
