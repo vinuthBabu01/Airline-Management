@@ -45,10 +45,10 @@ function BookFlight() {
         gender: '',
         email: '',
         phoneNo: '',
-        requiredSeats: '',
+        requiredSeats: ''
     });
-
     const handleChange = (prop) => (event) => {
+
         setInputs({ ...inputs, [prop]: event.target.value });
     };
 
@@ -62,14 +62,21 @@ function BookFlight() {
             email: inputs.email,
             phoneNo: inputs.phoneNo,
             requiredSeats: inputs.requiredSeats,
-            flightId: location.state.flight.flightId
-        }
-        console.log(userObject);
+            flightId: location.state.flight.flightNumber,
+            depart_date:location.state.params.depart_date,
+            origin:location.state.params.origin,
+            destination:location.state.params.destination,
+            price:location.state.flight.formattedPrice,
+            durationInMinutes:location.state.flight.durationInMinutes,
+            arrivalTime:location.state.flight.arrivalTime,
+            departureTime:location.state.flight.departureTime
 
-        axios.post('http://localhost:8084/booking/book', userObject)
+        }
+
+        axios.post('http://localhost:5000/ticket/book', userObject)
             .then((res) => {
                 console.log(res.data)
-                setBookingId(res.data.bookingId)
+                setBookingId(res.data.ticket_id)
                 setOpen(true);
             }).catch((error) => {
                 console.log(error)
@@ -87,7 +94,7 @@ function BookFlight() {
                         </Avatar>
                         <Typography component='h1' variant='h5' color='black' >Book Flight</Typography>
                         <Typography variant='caption'>
-                            {location.state.flight.flightName} flight {location.state.flight.flightId} from {location.state.flight.origin} to {location.state.flight.destination}
+                            {location.state.flight.carrierName} flight {location.state.flight.flightNumber} from {location.state.params.origin} to {location.state.params.destination}
                         </Typography>
                     </Stack>
                     <Stack sx={{ m: 1, width: 'stretch' }} alignItems='center' direction='row' spacing={2}>
@@ -96,7 +103,7 @@ function BookFlight() {
                             fullWidth
                             autoFocus
                             id="outlined-required-firstName"
-                            label="first name"
+                            label="First Name"
                             name='firstName'
                             value={inputs.firstName}
                             inputProps={{ pattern: '[a-zA-Z]{3,16}$' }}
@@ -106,7 +113,7 @@ function BookFlight() {
                             required
                             fullWidth
                             id="outlined-required-lastName"
-                            label="last name"
+                            label="Last Name"
                             name='lastName'
                             value={inputs.lastName}
                             inputProps={{ pattern: '[a-zA-Z]{1,16}$' }}
@@ -117,7 +124,7 @@ function BookFlight() {
                         required
                         fullWidth
                         id="outlined-required-email"
-                        label="email"
+                        label="Email"
                         name='email'
                         value={inputs.email}
                         inputProps={{ pattern: '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$' }}
@@ -127,7 +134,7 @@ function BookFlight() {
                         required
                         fullWidth
                         id="outlined-required-phoneNo"
-                        label="phone number"
+                        label="Phone Number"
                         name='phoneNo'
                         value={inputs.phoneNo}
                         inputProps={{ pattern: '[0-9]{10}$' }}
@@ -179,7 +186,7 @@ function BookFlight() {
                         </DialogTitle>
                         <DialogContent>
                             <DialogContentText id="alert-dialog-description" color='black'>
-                                Your booking for {location.state.flight.flightName} flight {location.state.flight.flightId} from {location.state.flight.origin} to {location.state.flight.destination} has been
+                                Your booking for {location.state.flight.carrierName} Flight {location.state.flight.flightNumber} from {location.state.params.origin} To {location.state.params.destination} has been
                                 confirmed with Booking ID: {bookingId}.
                             </DialogContentText>
                             <DialogContentText id="alert-dialog-description" color='black' gutterBottom>

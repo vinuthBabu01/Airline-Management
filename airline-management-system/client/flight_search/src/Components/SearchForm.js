@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import dayjs from 'dayjs';
 
 import "./customCss.css"; // Import your custom CSS file
 
@@ -17,7 +18,7 @@ function Form() {
   const [inputs, setInputs] = useState({
     origin: "",
     destination: "",
-    departureDate: null,
+    depart_date: null,
   });
 
   const handleChange = (event) => {
@@ -27,15 +28,17 @@ function Form() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+     let formatted_date = dayjs(inputs.depart_date).format('YYYY-MM-DD');
     navigate("/flights", {
-      state: { origin: inputs.origin, destination: inputs.destination },
+      
+      state: { origin: inputs.origin, destination: inputs.destination ,depart_date:formatted_date },
     });
   };
 
   const handleDateChange = (date) => {
     setInputs((prevState) => ({
       ...prevState,
-      departureDate: date,
+      depart_date: date,
     }));
   };
 

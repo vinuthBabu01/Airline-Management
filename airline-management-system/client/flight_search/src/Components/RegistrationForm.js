@@ -112,7 +112,7 @@ function Register() {
                             fullWidth
                             autoFocus
                             id="outlined-required-username"
-                            label="username"
+                            label="Username"
                             name='username'
                             value={inputs.username}
                             inputProps={''}
@@ -122,7 +122,7 @@ function Register() {
                             required
                             fullWidth
                             id="outlined-required-phoneNo"
-                            label="phone number"
+                            label="Phone Number"
                             name='phoneNo'
                             value={inputs.phoneNo}
                             inputProps={{ pattern: '[0-9]{10}$' }}
@@ -165,14 +165,14 @@ function Register() {
                         required
                         fullWidth
                         id="outlined-required-email"
-                        label="email"
+                        label="Email"
                         name='email'
                         value={inputs.email}
                         inputProps={{ pattern: '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$' }}
                         onChange={handleChange('email')}
                     />
                     <FormControl sx={{ m: 1, width: 'stretch' }} variant="outlined">
-                        <InputLabel htmlFor="outlined-adornment-email">verify email</InputLabel>
+                        <InputLabel htmlFor="outlined-adornment-email">Verify email</InputLabel>
                         <OutlinedInput
                             id="outlined-adornment-verifyemail"
                             required
@@ -185,7 +185,7 @@ function Register() {
                                     {email_error ? <ClearRoundedIcon color='error' /> : <CheckRoundedIcon color='success' />}
                                 </InputAdornment>
                             }
-                            label="verifyemail"
+                            label="erifyemail"
                         />
                     </FormControl>
                     <Stack alignItems='center' direction='row' spacing={2}>
@@ -211,11 +211,11 @@ function Register() {
                                         </IconButton>
                                     </InputAdornment>
                                 }
-                                label="password"
+                                label="Password"
                             />
                         </FormControl>
                         <FormControl sx={{ width: 'auto' }} variant="outlined">
-                            <InputLabel htmlFor="outlined-adornment-email">verify password</InputLabel>
+                            <InputLabel htmlFor="outlined-adornment-email">Verify Password</InputLabel>
                             <OutlinedInput
                                 id="outlined-adornment-verifypassword"
                                 required
